@@ -7,7 +7,6 @@ import Service from "./component/Features/services/Service";
 import Query from "./component/Features/Footer/Query";
 import PricingPage from "./component/Features/price/PricingPage/PricingPage";
 import AboutPage from "./component/Features/AboutUs/AboutPage";
-import ContactUs from "./component/Features/ContactPage/ContactUs";
 import PortfolioPage from "./component/Features/PortfolioPage/Landing";
 import WebsiteDetail from "./component/Features/services/pages/websitePage/WebsiteDetail";
 import GoogleList from "./component/Features/services/pages/GoogleList/LandingPage";
@@ -15,7 +14,7 @@ import DigitalMarket from "./component/Features/services/pages/DigitalMarket/Lan
 import LogoDesign from "./component/Features/services/pages/LogoDesign/LogoDesign";
 import Portfolio from "./component/Features/portfolio/Landing";
 import GoogleAdsPage from "./component/Features/price/Price";
-
+import ContactPage from "./component/Features/ContactPage/ContactPage";
 
 export default function App() {
   return (
@@ -36,7 +35,7 @@ export default function App() {
         />
         <Route path="/pricing" element={<PricingPage/>} />
         <Route path="/about" element={<AboutPage/>} />
-        <Route path="/contact" element={<ContactUs/>} />
+        <Route path="/contact" element={<ContactPage/>} />
         <Route path="/portfolio" element={<PortfolioPage/>} />
         <Route path="/website" element={<WebsiteDetail />} />
         <Route path="/digital" element={<DigitalMarket />} />
