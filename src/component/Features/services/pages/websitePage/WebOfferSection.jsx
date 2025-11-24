@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import Portfolio from "../../../portfolio/Portfolio";
 
+
 export default function WebOfferSection() {
   return (
     <div className="max-w-7xl mx-auto px-6 py-12 text-gray-900 overflow-x-hidden">
@@ -39,6 +40,7 @@ export default function WebOfferSection() {
           <h2 className="text-xl font-bold mt-8 mb-3">Packages</h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            
             <div className="border rounded-xl p-4 shadow-sm text-center">
               <p className="font-semibold">Starter Website</p>
               <p className="text-2xl font-bold">₹ 4,999</p>

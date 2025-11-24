@@ -1,23 +1,20 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
 import Navbar from "./component/Features/Navbar/Navbar";
 import Header from "./component/Features/Header/Header";
 import Footer from "./component/Features/Footer/Footer";
 import Service from "./component/Features/services/Service";
 import Query from "./component/Features/Footer/Query";
-import Pricing from "./component/Features/price/Pricing";
-// import Portfolio from "./component/Features/portfolio/Portfolio";
 import PricingPage from "./component/Features/price/PricingPage/PricingPage";
 import AboutPage from "./component/Features/AboutUs/AboutPage";
 import ContactUs from "./component/Features/ContactPage/ContactUs";
 import PortfolioPage from "./component/Features/PortfolioPage/Landing";
-
 import WebsiteDetail from "./component/Features/services/pages/websitePage/WebsiteDetail";
 import GoogleList from "./component/Features/services/pages/GoogleList/LandingPage";
 import DigitalMarket from "./component/Features/services/pages/DigitalMarket/LandingPage";
 import LogoDesign from "./component/Features/services/pages/LogoDesign/LogoDesign";
 import Portfolio from "./component/Features/portfolio/Landing";
+import GoogleAdsPage from "./component/Features/price/Price";
 
 
 export default function App() {
@@ -31,7 +28,7 @@ export default function App() {
             <>
               <Header />
               <Service />
-              <Pricing />
+              <GoogleAdsPage />
               <Portfolio />
               <Query/>
             </>

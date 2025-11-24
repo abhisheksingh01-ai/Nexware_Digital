@@ -2,7 +2,8 @@ import React from 'react';
 import Header from './Header';
 import WhatWeOffer from './WhatWeOffer';
 import WhyChooseUs from './WhyChooseUs';
-import Packages from './Packages';
+// import Packages from './Packages';
+import DevelopmentPlans from "../../../price/Price";
 
 
 
@@ -15,7 +16,8 @@ const LandingPage = () => {
           <WhatWeOffer />
           <WhyChooseUs />
         </div>
-        <Packages />
+        {/* <Packages /> */}
+        <DevelopmentPlans/>
       </main>
     </div>
   );
