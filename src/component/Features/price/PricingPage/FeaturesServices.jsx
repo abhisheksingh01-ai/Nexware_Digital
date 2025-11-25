@@ -1,4 +1,3 @@
-// FeaturesServices.jsx
 import React from "react";
 import { CheckCircle, Smartphone, Globe, FileText, Zap } from "lucide-react";
 
@@ -16,23 +15,46 @@ function FeatureRow({ icon: Icon, title, text }) {
   );
 }
 
-function ServiceCard({ title, price, bullets = [], accent }) {
+function KeywordChips({ chips = [] }) {
+  return (
+    <div className="mt-3 flex flex-wrap gap-2">
+      {chips.map((c, idx) => (
+        <span
+          key={idx}
+          className="inline-block text-xs px-2 py-1 rounded-full bg-slate-100 text-slate-700"
+        >
+          {c}
+        </span>
+      ))}
+    </div>
+  );
+}
+
+function ServiceCard({ title, price, bullets = [], accent, keywords = [] }) {
   return (
     <article
-      className={`bg-white rounded-2xl p-5 shadow-lg border ${accent ? accent : ""} transform hover:-translate-y-2 transition`}
+      className={`bg-white rounded-2xl p-5 shadow-lg border ${accent || ""} h-full flex flex-col transform hover:-translate-y-2 transition`}
     >
       <div className="flex items-start justify-between gap-3">
         <div>
           <h3 className="text-lg font-bold text-slate-900">{title}</h3>
-          {price && <div className="text-sm text-slate-500 mt-1">Starting at <span className="font-semibold text-slate-900">₹ {price}</span></div>}
+          {price && (
+            <div className="text-sm text-slate-500 mt-1">
+              Starting at{" "}
+              <span className="font-semibold text-slate-900">₹ {price}</span>
+            </div>
+          )}
+
+          {/* Keyword chips under title */}
+          {keywords.length > 0 && <KeywordChips chips={keywords} />}
         </div>
 
-        <div className="flex items-center gap-2">
-          <span className="inline-block text-xs px-2 py-1 rounded-full bg-[#f0f9ff] text-[#2b7bff] font-medium">Popular</span>
-        </div>
+        <span className="inline-block text-xs px-2 py-1 rounded-full bg-[#f0f9ff] text-[#2b7bff] font-medium">
+          Popular
+        </span>
       </div>
 
-      <ul className="mt-4 space-y-2 text-sm text-slate-600">
+      <ul className="mt-4 space-y-2 text-sm text-slate-600 flex-grow">
         {bullets.map((b, i) => (
           <li key={i} className="flex items-start gap-2">
             <CheckCircle className="w-4 h-4 text-green-500 mt-1 flex-shrink-0" />
@@ -42,8 +64,15 @@ function ServiceCard({ title, price, bullets = [], accent }) {
       </ul>
 
       <div className="mt-5 flex items-center gap-3">
-        <a href="#contact" className="inline-flex items-center gap-2 rounded-lg bg-[#2b7bff] text-white px-4 py-2 text-sm font-semibold shadow">Get Quote</a>
-        <a href="#details" className="text-sm text-slate-600 hover:underline">See details</a>
+        <a
+          href="#contact"
+          className="inline-flex items-center gap-2 rounded-lg bg-[#2b7bff] text-white px-4 py-2 text-sm font-semibold shadow"
+        >
+          Get Quote
+        </a>
+        <a href="#details" className="text-sm text-slate-600 hover:underline">
+          See details
+        </a>
       </div>
     </article>
   );
@@ -53,19 +82,23 @@ export default function FeaturesServices() {
   return (
     <section className="max-w-7xl mx-auto px-6 py-12 lg:py-16">
       <div className="text-center mb-8">
-        <h2 className="text-3xl lg:text-4xl font-extrabold text-slate-900">What we build — Features & Services</h2>
+        <h2 className="text-3xl lg:text-4xl font-extrabold text-slate-900">
+          What we build — Features & Services
+        </h2>
         <p className="text-slate-600 mt-2 max-w-2xl mx-auto">
-          Full-service website solutions — responsive design, SEO-ready, and performance-first. Pick services a-la-carte or a complete package.
+          Full-service website solutions — responsive design, SEO-ready, and
+          performance-first. Pick services a-la-carte or a complete package.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Left Column: Key features (stack of feature rows) */}
-        <div className="col-span-1 lg:col-span-1 space-y-4">
-          <div className="bg-white p-6 rounded-2xl shadow-lg border">
+      {/* Ensures same-height cards */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+        {/* Left Column */}
+        <div className="h-full">
+          <div className="bg-white p-6 rounded-2xl shadow-lg border h-full flex flex-col">
             <h3 className="text-xl font-semibold text-slate-900 mb-3">Key Features</h3>
 
-            <div className="space-y-4">
+            <div className="space-y-4 flex-grow">
               <FeatureRow
                 icon={Smartphone}
                 title="Responsive Design"
@@ -93,36 +126,46 @@ export default function FeaturesServices() {
                 <div className="text-xs text-slate-500">Need a custom feature?</div>
                 <div className="font-semibold text-slate-900">We’ll build it for you.</div>
               </div>
-              <a href="#contact" className="text-sm text-[#2b7bff] font-medium hover:underline">Talk to us →</a>
+              <a
+                href="#contact"
+                className="text-sm text-[#2b7bff] font-medium hover:underline"
+              >
+                Talk to us →
+              </a>
             </div>
           </div>
         </div>
 
-        {/* Middle Column: Popular service card */}
-        <div className="col-span-1">
-          <ServiceCard
-            title="Website + Design (Popular)"
-            price="12,999"
-            bullets={[
-              "Custom responsive design",
-              "SEO basics + speed optimization",
-              "Contact form & Google Analytics",
-              "1 month free support"
-            ]}
-            accent=""
-          />
-        </div>
+        {/* Middle (Popular) with extra keywords */}
+        <ServiceCard
+          title="Website + Design (Popular)"
+          price="12,999"
+          keywords={["UI/UX", "Responsive", "SEO", "Performance", "Analytics"]}
+          bullets={[
+            "Custom responsive design",
+            "SEO basics + speed optimization",
+            "Contact form & Google Analytics",
+            "1 month free support",
+            "Accessible & WCAG-ready components",
+            "Performance budget and optimization",
+          ]}
+        />
 
-        {/* Right Column: Additional services list + CTA */}
-        <div className="col-span-1 space-y-4">
-          <div className="bg-white p-6 rounded-2xl shadow-lg border">
+        {/* Right Column with more keywords for each service */}
+        <div className="h-full">
+          <div className="bg-white p-6 rounded-2xl shadow-lg border h-full flex flex-col">
             <h3 className="text-xl font-semibold text-slate-900 mb-3">Additional Services</h3>
 
-            <div className="space-y-3">
+            <div className="space-y-3 flex-grow">
               <div className="flex items-start justify-between">
                 <div>
                   <div className="text-sm font-medium text-slate-900">Logo Design</div>
                   <div className="text-xs text-slate-500">Brand identity & variations</div>
+                  <div className="mt-2 flex gap-2">
+                    <span className="inline-block text-xs px-2 py-1 rounded-full bg-slate-100 text-slate-700">Branding</span>
+                    <span className="inline-block text-xs px-2 py-1 rounded-full bg-slate-100 text-slate-700">Vector</span>
+                    <span className="inline-block text-xs px-2 py-1 rounded-full bg-slate-100 text-slate-700">Print-ready</span>
+                  </div>
                 </div>
                 <div className="text-sm font-semibold text-slate-900">₹ 3,999</div>
               </div>
@@ -131,6 +174,11 @@ export default function FeaturesServices() {
                 <div>
                   <div className="text-sm font-medium text-slate-900">Google My Business</div>
                   <div className="text-xs text-slate-500">Listing + optimization</div>
+                  <div className="mt-2 flex gap-2">
+                    <span className="inline-block text-xs px-2 py-1 rounded-full bg-slate-100 text-slate-700">Local SEO</span>
+                    <span className="inline-block text-xs px-2 py-1 rounded-full bg-slate-100 text-slate-700">Maps</span>
+                    <span className="inline-block text-xs px-2 py-1 rounded-full bg-slate-100 text-slate-700">Citations</span>
+                  </div>
                 </div>
                 <div className="text-sm font-semibold text-slate-900">₹ 2,999</div>
               </div>
@@ -139,6 +187,11 @@ export default function FeaturesServices() {
                 <div>
                   <div className="text-sm font-medium text-slate-900">Content Writing</div>
                   <div className="text-xs text-slate-500">SEO content & copy</div>
+                  <div className="mt-2 flex gap-2">
+                    <span className="inline-block text-xs px-2 py-1 rounded-full bg-slate-100 text-slate-700">SEO</span>
+                    <span className="inline-block text-xs px-2 py-1 rounded-full bg-slate-100 text-slate-700">Blogs</span>
+                    <span className="inline-block text-xs px-2 py-1 rounded-full bg-slate-100 text-slate-700">Landing copy</span>
+                  </div>
                 </div>
                 <div className="text-sm font-semibold text-slate-900">₹ 1.5k+</div>
               </div>
@@ -147,6 +200,11 @@ export default function FeaturesServices() {
                 <div>
                   <div className="text-sm font-medium text-slate-900">E-commerce Setup</div>
                   <div className="text-xs text-slate-500">Product upload & payment</div>
+                  <div className="mt-2 flex gap-2">
+                    <span className="inline-block text-xs px-2 py-1 rounded-full bg-slate-100 text-slate-700">Shopify</span>
+                    <span className="inline-block text-xs px-2 py-1 rounded-full bg-slate-100 text-slate-700">Payment</span>
+                    <span className="inline-block text-xs px-2 py-1 rounded-full bg-slate-100 text-slate-700">Catalog</span>
+                  </div>
                 </div>
                 <div className="text-sm font-semibold text-slate-900">₹ 5,999</div>
               </div>
@@ -154,22 +212,13 @@ export default function FeaturesServices() {
 
             <div className="mt-6 pt-4 border-t flex items-center justify-between">
               <div className="text-sm text-slate-600">Want a package?</div>
-              <a href="#packages" className="text-sm bg-[#10b981] text-white px-3 py-2 rounded-lg font-medium shadow">See Packages</a>
+              <a
+                href="#packages"
+                className="text-sm bg-[#10b981] text-white px-3 py-2 rounded-lg font-medium shadow"
+              >
+                See Packages
+              </a>
             </div>
-          </div>
-
-          {/* Small CTA card */}
-          <div className="bg-gradient-to-br from-[#f6fcff] to-white p-6 rounded-2xl border-dashed border-2 border-slate-100 text-center">
-            <div className="flex items-center justify-center gap-3 mb-3">
-              <div className="w-10 h-10 rounded-lg bg-[#2b7bff] flex items-center justify-center text-white">
-                <Smartphone className="w-5 h-5" />
-              </div>
-              <div>
-                <div className="text-sm text-slate-700">Quick Call</div>
-                <div className="font-semibold text-slate-900">+91 98765 43210</div>
-              </div>
-            </div>
-            <a href="#book" className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#2b7bff] text-white font-semibold shadow">Book a 15-min call</a>
           </div>
         </div>
       </div>
