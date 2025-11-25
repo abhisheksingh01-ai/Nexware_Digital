@@ -5,18 +5,49 @@ export default function FormButton({ btn = "Get Started Now" }) {
   const [open, setOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Form Inputs
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      const res = await fetch(
+        "https://nexware-digital-server.vercel.app/send-email",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        }
+      );
 
-    alert(
-      "Thank you! Your inquiry has been submitted. We will contact you shortly."
-    );
+      const data = await res.json();
+
+      if (res.ok) {
+        alert("Thank you! Your inquiry has been submitted.");
+        setFormData({ name: "", email: "", message: "" });
+        setOpen(false);
+      } else {
+        alert(data.error || "Something went wrong. Try again!");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Server error! Please try again later.");
+    }
 
     setIsSubmitting(false);
-    setOpen(false);
   };
 
   return (
@@ -52,15 +83,32 @@ export default function FormButton({ btn = "Get Started Now" }) {
             </div>
 
             <form onSubmit={handleSubmit} className="p-6 space-y-5">
-              <Input label="Full Name" type="text" required />
-              <Input label="Business Email" type="email" required />
-              <Input label="Phone Number" type="tel" required />
+              <Input
+                label="Full Name"
+                type="text"
+                name="name"
+                required
+                value={formData.name}
+                onChange={handleChange}
+              />
+
+              <Input
+                label="Business Email"
+                type="email"
+                name="email"
+                required
+                value={formData.email}
+                onChange={handleChange}
+              />
 
               <div className="relative">
                 <textarea
+                  name="message"
                   required
                   rows="3"
                   placeholder=" "
+                  value={formData.message}
+                  onChange={handleChange}
                   className="peer w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-600 outline-none transition bg-white"
                 ></textarea>
                 <label className="floating-label bg-white">Your Query</label>
@@ -114,7 +162,7 @@ export default function FormButton({ btn = "Get Started Now" }) {
             color: #6b7280;
             transition: 0.2s ease;
             pointer-events: none;
-            line-height: 1; 
+            line-height: 1;
           }
           textarea:focus + .floating-label,
           textarea:not(:placeholder-shown) + .floating-label,
@@ -123,7 +171,7 @@ export default function FormButton({ btn = "Get Started Now" }) {
             top: -8px;
             font-size: 12px;
             color: #4f46e5;
-            background-color: white; 
+            background-color: white;
           }
 
           .loader {
@@ -143,13 +191,16 @@ export default function FormButton({ btn = "Get Started Now" }) {
   );
 }
 
-function Input({ label, type, required }) {
+function Input({ label, type, name, required, value, onChange }) {
   return (
     <div className="relative">
       <input
         type={type}
+        name={name}
         required={required}
         placeholder=" "
+        value={value}
+        onChange={onChange}
         className="peer w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-600 outline-none transition bg-white"
       />
       <label className="floating-label bg-white">{label}</label>
