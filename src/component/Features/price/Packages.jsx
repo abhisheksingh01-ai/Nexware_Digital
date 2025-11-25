@@ -1,4 +1,4 @@
-// Premium Stripe-Style Packages Component (Fully Fixed + Cleaned)
+// Premium Stripe-Style Packages Component (Fully Fixed)
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircleIcon, XMarkIcon } from "@heroicons/react/24/solid";
@@ -13,7 +13,7 @@ export default function Packages({ plans }) {
 
   const [paymentForm, setPaymentForm] = useState({
     name: "",
-    utrid: "",
+    transactionId: "",
     phone: "",
     screenshot: null,
   });
@@ -24,7 +24,7 @@ export default function Packages({ plans }) {
     setSelectedPlan(plan);
     setPaymentForm({
       name: "",
-      utrid: "",
+      transactionId: "",
       phone: "",
       screenshot: null,
     });
@@ -43,9 +43,7 @@ export default function Packages({ plans }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setStatus("loading");
-
-    // Fake submit simulation
-    setTimeout(() => setStatus("success"), 1800);
+    setTimeout(() => setStatus("success"), 1500);
   };
 
   const cardVariant = {
@@ -57,9 +55,9 @@ export default function Packages({ plans }) {
     }),
   };
 
-  // ---------------------------
+  // -------------------------
   // Payment Modal Component
-  // ---------------------------
+  // -------------------------
   const PaymentModal = () => (
     <AnimatePresence>
       {openModal && selectedPlan && (
@@ -77,6 +75,7 @@ export default function Packages({ plans }) {
             exit={{ scale: 0.85, opacity: 0 }}
             onClick={(e) => e.stopPropagation()}
           >
+            {/* Close Button */}
             <button
               className="absolute top-4 right-4 text-gray-500 hover:text-gray-800 transition"
               onClick={closeModal}
@@ -84,17 +83,15 @@ export default function Packages({ plans }) {
               <XMarkIcon className="w-7 h-7" />
             </button>
 
-            {/* Title */}
             <h3 className="text-2xl font-semibold text-gray-900 border-b pb-4 mb-6">
-              Complete Payment –
+              Complete Payment –{" "}
               <span className="text-blue-600 font-semibold">
-                {" "}
                 {selectedPlan.plan}
               </span>
             </h3>
 
             <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
-              {/* QR BLOCK */}
+              {/* QR Section */}
               <div className="lg:col-span-2 bg-gray-50 p-6 rounded-xl border">
                 <h4 className="text-lg font-medium text-gray-900 mb-3">
                   Total: {selectedPlan.currency}
@@ -103,7 +100,7 @@ export default function Packages({ plans }) {
 
                 <img
                   src={`${MOCK_QR}${encodeURIComponent(
-                    upi://pay?pa=${MOCK_UPI}&pn=Merchant&am=${selectedPlan.amount}&cu=INR
+                    `upi://pay?pa=${MOCK_UPI}&pn=Merchant&am=${selectedPlan.amount}&cu=INR`
                   )}`}
                   alt="QR Code"
                   className="w-52 h-52 mx-auto border-4 border-white rounded-xl shadow"
@@ -113,15 +110,13 @@ export default function Packages({ plans }) {
                   Scan using GPay / PhonePe / Paytm
                 </p>
 
-                <p className="mt-3 text-sm font-medium text-gray-800">
-                  UPI ID:
-                </p>
+                <p className="mt-3 text-sm font-medium text-gray-800">UPI ID:</p>
                 <p className="text-blue-600 font-medium text-sm select-all">
                   {MOCK_UPI}
                 </p>
               </div>
 
-              {/* FORM BLOCK */}
+              {/* Form Section */}
               <div className="lg:col-span-3">
                 <h4 className="text-xl font-semibold text-gray-900 mb-4">
                   Confirm Payment Details
@@ -142,22 +137,22 @@ export default function Packages({ plans }) {
                   </div>
                 ) : (
                   <form className="space-y-4" onSubmit={handleSubmit}>
-                    {/* FIXED — ALL INPUTS SAVING PROPER STATE */}
+                    {/* INPUT FIELDS */}
                     {[
                       {
                         label: "Your Name",
                         name: "name",
-                        placeholder: "Enter full name",
+                        placeholder: "Enter your full name",
                       },
                       {
                         label: "UTR Number",
-                        name: "utrid",
-                        placeholder: "e.g. 987654321",
+                        name: "transactionId",
+                        placeholder: "Enter UTR / Transaction ID",
                       },
                       {
-                        label: "Phone",
+                        label: "Phone Number",
                         name: "phone",
-                        placeholder: "Enter phone number",
+                        placeholder: "Required for confirmation",
                       },
                     ].map((f) => (
                       <div key={f.name}>
@@ -170,8 +165,8 @@ export default function Packages({ plans }) {
                           value={paymentForm[f.name]}
                           onChange={change}
                           placeholder={f.placeholder}
-                          className="w-full mt-1 border border-gray-300 rounded-xl px-4 py-2.5 text-[15px] focus:ring-2 focus:ring-blue-500"
                           required
+                          className="w-full mt-1 border border-gray-300 rounded-xl px-4 py-2.5 text-[15px] focus:ring-2 focus:ring-blue-500"
                         />
                       </div>
                     ))}
@@ -179,22 +174,25 @@ export default function Packages({ plans }) {
                     {/* Screenshot Upload */}
                     <div>
                       <label className="font-medium text-gray-700">
-                        Upload Screenshot
+                        Upload Payment Screenshot
                       </label>
                       <input
                         type="file"
                         accept="image/*"
                         onChange={uploadFile}
-                        className="w-full mt-1 border border-gray-300 rounded-xl p-2 text-[15px]"
                         required
+                        className="w-full mt-1 border border-gray-300 rounded-xl p-2 text-[15px]"
                       />
                     </div>
 
+                    {/* Submit Button */}
                     <button
                       type="submit"
                       className="w-full py-3 rounded-xl text-lg font-semibold bg-blue-600 text-white hover:bg-blue-700 transition"
                     >
-                      {status === "loading" ? "Submitting..." : "Submit Details"}
+                      {status === "loading"
+                        ? "Submitting..."
+                        : "Submit Details"}
                     </button>
                   </form>
                 )}
@@ -213,21 +211,21 @@ export default function Packages({ plans }) {
         <div className="text-center mb-14">
           <h2
             className="
-              text-3xl sm:text-3xl font-extrabold
-              bg-gradient-to-r from-[#2b7bff] via-[#7dd3fc] to-[#8b5cf6]
-              text-transparent bg-clip-text
-              tracking-tight
-            "
+            text-3xl sm:text-3xl font-extrabold
+            bg-gradient-to-r from-[#2b7bff] via-[#7dd3fc] to-[#8b5cf6]
+            text-transparent bg-clip-text
+            tracking-tight
+          "
           >
             Everything You Need, At the Right Price
           </h2>
 
           <p
             className="
-              mt-3 text-lg sm:text-xl 
-              text-gray-700 font-medium 
-              max-w-2xl mx-auto 
-            "
+            mt-3 text-lg sm:text-xl 
+            text-gray-700 font-medium 
+            max-w-2xl mx-auto 
+          "
           >
             Premium features. Simple pricing. Built for businesses.
           </p>
