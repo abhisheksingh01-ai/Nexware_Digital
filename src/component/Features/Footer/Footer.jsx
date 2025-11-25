@@ -80,7 +80,7 @@ export default function Footer() {
 
       <div className="text-center mt-8 pt-6 border-t border-gray-200">
         <p className="text-gray-500 text-sm">
-          © {new Date().getFullYear()} Tech Nexware Digital. All rights reserved. Crafted with 💙.
+          © {new Date().getFullYear()} Tech Nexware Digital. All rights reserved.
         </p>
       </div>
     </footer>
