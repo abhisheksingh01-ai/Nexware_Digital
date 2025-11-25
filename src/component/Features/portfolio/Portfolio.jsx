@@ -5,7 +5,7 @@ import project_02 from "../../../assets/project_02.png";
 import project_03 from "../../../assets/project_03.png";
 
 
-export default function  Portfolio() {
+export default function Portfolio() {
   const projects = [
     {
       id: 1,
@@ -52,7 +52,7 @@ export default function  Portfolio() {
                 rel="noopener noreferrer"
                 className="inline-block bg-blue-600 text-white px-5 py-2 rounded-lg font-medium hover:bg-blue-700 transition"
               >
-                View Djemo
+                View Demo
               </a>
             </div>
           </div>

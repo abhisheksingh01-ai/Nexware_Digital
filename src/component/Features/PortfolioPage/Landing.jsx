@@ -8,7 +8,7 @@ export default function Landing() {
     <div>
       <Hero/>
       <Portfolio/>
-      <BottomCTA/>
+      {/* <BottomCTA/> */}
     </div>
   )
 }

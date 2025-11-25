@@ -1,10 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
 import webIcon from "../../../assets/web-design.gif";
 import digitalIcon from "../../../assets/social-marketing.gif";
 import logoIcon from "../../../assets/logo-design.gif";
-import googleIcon from "../../../assets/network.gif";
+import googleIcon from "../../../assets/network.gif"
 
 export default function Service() {
   const navigate = useNavigate();
@@ -37,54 +36,44 @@ export default function Service() {
   ];
 
   return (
-    <section className="w-full py-24 bg-white font-sans overflow-hidden">
+    <section className="w-full py-24 **bg-white**">
       <div className="max-w-6xl mx-auto px-6">
 
-        {/* Page Heading */}
-        <motion.h2
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-16 text-center"
-        >
+        <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-16 text-center">
           Our Services
-        </motion.h2>
+        </h2>
 
-        {/* Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 place-items-center">
           {services.map((item, index) => (
-            <motion.div
+            <div
               key={index}
               onClick={() => navigate(item.link)}
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.15 }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.97 }}
-              className="bg-white rounded-3xl border border-gray-200 shadow-lg hover:shadow-2xl cursor-pointer p-6 flex flex-col items-center justify-center transition-all duration-300 group"
-              style={{ width: "280px", height: "280px" }}
+              className="bg-white rounded-3xl border border-gray-200 shadow-lg 
+              hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer 
+              p-6 flex flex-col items-center justify-center"
+              style={{
+                width: "280px",
+                height: "280px",
+              }}
             >
-              {/* Icon */}
-              <motion.img
+ 
+              <img
                 src={item.icon}
                 alt={item.title}
-                className="w-24 h-24 object-contain mb-4"
-                whileHover={{ rotate: 8 }}
-                transition={{ type: "spring", stiffness: 200 }}
+                className="w-24 h-24 object-contain mb-4 transition-transform duration-300 group-hover:scale-110"
               />
 
-              {/* Title */}
               <h3 className="text-xl font-bold text-gray-900 mb-2 text-center">
                 {item.title}
               </h3>
 
-              {/* Description */}
               <p className="text-gray-600 text-sm text-center leading-relaxed px-3">
                 {item.desc}
               </p>
-            </motion.div>
+            </div>
           ))}
         </div>
+
       </div>
     </section>
   );
