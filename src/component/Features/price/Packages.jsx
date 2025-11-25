@@ -7,7 +7,7 @@ const MOCK_QR =
 const MOCK_UPI = "YOUR.UPI@BANK";
 
 // ---------------------------
-// PAYMENT MODAL COMPONENT (ENHANCED)
+// PAYMENT MODAL COMPONENT (UPDATED)
 // ---------------------------
 const PaymentModal = ({
   openModal,
@@ -20,11 +20,16 @@ const PaymentModal = ({
 }) => {
   if (!openModal || !selectedPlan) return null;
 
-  const change = (e) =>
-    setPaymentForm({ ...paymentForm, [e.target.name]: e.target.value });
+  // FIXED UPDATE FUNCTION (Prevents Blinking)
+  const change = (e) => {
+    const { name, value } = e.target;
+    setPaymentForm((prev) => ({ ...prev, [name]: value }));
+  };
 
-  const uploadFile = (e) =>
-    setPaymentForm({ ...paymentForm, screenshot: e.target.files[0] });
+  // FILE UPLOAD FIX
+  const uploadFile = (e) => {
+    setPaymentForm((prev) => ({ ...prev, screenshot: e.target.files[0] }));
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,8 +39,6 @@ const PaymentModal = ({
     formData.append("name", paymentForm.name);
     formData.append("utr", paymentForm.utr);
     formData.append("phone", paymentForm.phone);
-    formData.append("plan", selectedPlan.plan);
-    formData.append("amount", selectedPlan.amount);
     formData.append("screenshot", paymentForm.screenshot);
 
     try {
@@ -63,15 +66,14 @@ const PaymentModal = ({
   return (
     <AnimatePresence>
       <motion.div
-        className="fixed inset-0 bg-black/70 backdrop-blur-sm flex justify-center items-center p-4 z-50" // Darker backdrop for better focus
+        className="fixed inset-0 bg-black/70 backdrop-blur-sm flex justify-center items-center p-4 z-50"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         onClick={closeModal}
       >
         <motion.div
-          // Added max-w-lg for small screen, but kept max-w-4xl for larger screens
-          className="bg-white rounded-2xl shadow-2xl max-w-full sm:max-w-lg lg:max-w-4xl w-full p-4 sm:p-6 lg:p-8 relative border border-gray-200 overflow-y-auto max-h-[90vh]" // Added max-h-[90vh] and overflow-y-auto for content that might exceed screen height on mobile
+          className="bg-white rounded-2xl shadow-2xl max-w-full sm:max-w-lg lg:max-w-4xl w-full p-4 sm:p-6 lg:p-8 relative border border-gray-200 overflow-y-auto max-h-[90vh]"
           initial={{ scale: 0.9, y: 50, opacity: 0 }}
           animate={{ scale: 1, y: 0, opacity: 1 }}
           exit={{ scale: 0.9, y: 50, opacity: 0 }}
@@ -84,7 +86,7 @@ const PaymentModal = ({
             <XMarkIcon className="w-6 h-6 sm:w-7 sm:h-7" />
           </button>
 
-          <h3 className="text-xl sm:text-2xl font-bold text-gray-900 border-b pb-3 sm:pb-4 mb-4 sm:mb-6">
+          <h3 className="text-xl sm:text-2xl font-bold text-gray-900 border-b pb-4 mb-6">
             Complete Payment –{" "}
             <span className="text-blue-600 font-extrabold">
               {selectedPlan.plan}
@@ -93,8 +95,7 @@ const PaymentModal = ({
 
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
             {/* QR Section */}
-            {/* On small screens, this will be 1 column, stacking vertically */}
-            <div className="lg:col-span-2 bg-gray-50 p-5 sm:p-6 rounded-xl border flex flex-col items-center">
+            <div className="lg:col-span-2 bg-gray-50 p-6 rounded-xl border flex flex-col items-center">
               <h4 className="text-lg font-bold text-gray-900 mb-4 text-center">
                 Total Amount:{" "}
                 <span className="text-red-600">
@@ -108,7 +109,7 @@ const PaymentModal = ({
                   `upi://pay?pa=${MOCK_UPI}&pn=Merchant&am=${selectedPlan.amount}&cu=INR`
                 )}`}
                 alt="QR Code"
-                className="w-48 h-48 sm:w-52 sm:h-52 mx-auto border-4 border-white rounded-xl shadow-lg" // Slightly smaller QR on mobile
+                className="w-48 h-48 sm:w-52 sm:h-52 mx-auto border-4 border-white rounded-xl shadow-lg"
               />
 
               <p className="text-base text-gray-700 mt-4 font-semibold text-center">
@@ -121,7 +122,7 @@ const PaymentModal = ({
                 </p>
                 <p
                   className="text-blue-600 font-bold text-base select-all cursor-pointer"
-                  onClick={() => navigator.clipboard.writeText(MOCK_UPI)} // Added copy functionality on click
+                  onClick={() => navigator.clipboard.writeText(MOCK_UPI)}
                   title="Click to copy UPI ID"
                 >
                   {MOCK_UPI}
@@ -166,7 +167,7 @@ const PaymentModal = ({
                       onChange={change}
                       placeholder="Enter full name"
                       required
-                      className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150"
+                      className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:ring-2 focus:ring-blue-500"
                     />
                   </div>
 
@@ -180,9 +181,9 @@ const PaymentModal = ({
                       name="utr"
                       value={paymentForm.utr}
                       onChange={change}
-                      placeholder="e.g. 1234567890 (Mandatory for verification)"
+                      placeholder="e.g. 1234567890"
                       required
-                      className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150"
+                      className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:ring-2 focus:ring-blue-500"
                     />
                   </div>
 
@@ -192,17 +193,17 @@ const PaymentModal = ({
                       Phone Number
                     </label>
                     <input
-                      type="tel" // Use tel for better mobile keyboard experience
+                      type="tel"
                       name="phone"
                       value={paymentForm.phone}
                       onChange={change}
                       placeholder="Enter your phone number"
                       required
-                      className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150"
+                      className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:ring-2 focus:ring-blue-500"
                     />
                   </div>
 
-                  {/* Screenshot Upload */}
+                  {/* Screenshot */}
                   <div>
                     <label className="font-medium text-gray-700 block mb-1">
                       Payment Screenshot
@@ -212,45 +213,16 @@ const PaymentModal = ({
                       accept="image/*"
                       onChange={uploadFile}
                       required
-                      className="w-full border border-gray-300 rounded-xl p-3 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" // Styled file input for better look
+                      className="w-full border border-gray-300 rounded-xl p-3 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700"
                     />
-                    <p className="text-xs text-gray-500 mt-1">
-                      *Please upload a clear screenshot of the successful payment.
-                    </p>
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full py-3.5 rounded-xl text-lg font-bold bg-blue-600 text-white hover:bg-blue-700 transition duration-200 shadow-lg disabled:bg-gray-400 disabled:cursor-not-allowed"
+                    className="w-full py-3.5 rounded-xl text-lg font-bold bg-blue-600 text-white hover:bg-blue-700 transition duration-200 shadow-lg disabled:bg-gray-400"
                     disabled={status === "loading"}
                   >
-                    {status === "loading" ? (
-                      <div className="flex items-center justify-center">
-                        <svg
-                          className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                        >
-                          <circle
-                            className="opacity-25"
-                            cx="12"
-                            cy="12"
-                            r="10"
-                            stroke="currentColor"
-                            strokeWidth="4"
-                          ></circle>
-                          <path
-                            className="opacity-75"
-                            fill="currentColor"
-                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                          ></path>
-                        </svg>
-                        Submitting...
-                      </div>
-                    ) : (
-                      "Submit Details & Complete"
-                    )}
+                    {status === "loading" ? "Submitting..." : "Submit Details"}
                   </button>
                 </form>
               )}
@@ -263,7 +235,7 @@ const PaymentModal = ({
 };
 
 // --------------------------------
-// MAIN COMPONENT (MINIMAL CHANGES)
+// MAIN COMPONENT
 // --------------------------------
 export default function Packages({ plans }) {
   const [openModal, setOpenModal] = useState(false);
@@ -280,7 +252,12 @@ export default function Packages({ plans }) {
 
   const openPopup = (plan) => {
     setSelectedPlan(plan);
-    setPaymentForm({ name: "", utr: "", phone: "", screenshot: null });
+    setPaymentForm({
+      name: "",
+      utr: "",
+      phone: "",
+      screenshot: null,
+    });
     setStatus(null);
     setOpenModal(true);
   };
@@ -309,13 +286,12 @@ export default function Packages({ plans }) {
           </p>
         </div>
 
-        {/* Plans Grid */}
-        {/* Ensured the grid also stacks on mobile */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"> 
+        {/* Pricing Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {plans.map((item, index) => (
             <motion.div
               key={index}
-              className="bg-white p-6 sm:p-8 rounded-2xl shadow-md border hover:shadow-xl transition cursor-pointer flex flex-col h-full" // Added flex-col h-full for equal card height
+              className="bg-white p-6 sm:p-8 rounded-2xl shadow-md border hover:shadow-xl transition cursor-pointer flex flex-col h-full"
               variants={cardVariant}
               initial="hidden"
               animate="visible"
@@ -335,10 +311,10 @@ export default function Packages({ plans }) {
                 <p className="text-gray-600 mb-6">{item.description}</p>
               </div>
 
-              <ul className="space-y-3 mb-8 flex-grow-0">
+              <ul className="space-y-3 mb-8">
                 {item.features.map((f, i) => (
                   <li key={i} className="flex items-start text-sm sm:text-base">
-                    <CheckCircleIcon className="w-5 h-5 text-blue-600 mr-2 flex-shrink-0" />
+                    <CheckCircleIcon className="w-5 h-5 text-blue-600 mr-2" />
                     {f}
                   </li>
                 ))}
