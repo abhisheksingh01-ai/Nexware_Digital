@@ -1,3 +1,4 @@
+// About us Page
 import React from "react";
 // Using the same icons for visual consistency. Plus a star icon for mission/vision bullets.
 import { Target, Lightbulb, TrendingUp, CheckCircle, Star } from "lucide-react"; 
