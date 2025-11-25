@@ -1,13 +1,12 @@
-// Premium Stripe-Style Packages Component (Fully Fixed + Cleaned)
+// src/component/Features/price/Packages.jsx
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircleIcon, XMarkIcon } from "@heroicons/react/24/solid";
 
-const MOCK_QR =
-  "https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=";
+const MOCK_QR = "https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=";
 const MOCK_UPI = "YOUR.UPI@BANK";
 
-export default function Packages({ plans }) {
+export default function Packages({ plans = [] }) {
   const [openModal, setOpenModal] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState(null);
 
@@ -32,7 +31,11 @@ export default function Packages({ plans }) {
     setOpenModal(true);
   };
 
-  const closeModal = () => setOpenModal(false);
+  const closeModal = () => {
+    setOpenModal(false);
+    setSelectedPlan(null);
+    setStatus(null);
+  };
 
   const change = (e) =>
     setPaymentForm({ ...paymentForm, [e.target.name]: e.target.value });
@@ -44,7 +47,7 @@ export default function Packages({ plans }) {
     e.preventDefault();
     setStatus("loading");
 
-    // Fake submit simulation
+    // Fake submit simulation (replace with real submit logic)
     setTimeout(() => setStatus("success"), 1800);
   };
 
@@ -87,10 +90,7 @@ export default function Packages({ plans }) {
             {/* Title */}
             <h3 className="text-2xl font-semibold text-gray-900 border-b pb-4 mb-6">
               Complete Payment –
-              <span className="text-blue-600 font-semibold">
-                {" "}
-                {selectedPlan.plan}
-              </span>
+              <span className="text-blue-600 font-semibold"> {selectedPlan.plan}</span>
             </h3>
 
             <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
@@ -101,9 +101,10 @@ export default function Packages({ plans }) {
                   {selectedPlan.amount}
                 </h4>
 
+                {/* FIXED: properly wrap the UPI URL string before encodeURIComponent */}
                 <img
                   src={`${MOCK_QR}${encodeURIComponent(
-                    upi://pay?pa=${MOCK_UPI}&pn=Merchant&am=${selectedPlan.amount}&cu=INR
+                    `upi://pay?pa=${MOCK_UPI}&pn=Merchant&am=${selectedPlan.amount}&cu=INR`
                   )}`}
                   alt="QR Code"
                   className="w-52 h-52 mx-auto border-4 border-white rounded-xl shadow"
@@ -113,12 +114,8 @@ export default function Packages({ plans }) {
                   Scan using GPay / PhonePe / Paytm
                 </p>
 
-                <p className="mt-3 text-sm font-medium text-gray-800">
-                  UPI ID:
-                </p>
-                <p className="text-blue-600 font-medium text-sm select-all">
-                  {MOCK_UPI}
-                </p>
+                <p className="mt-3 text-sm font-medium text-gray-800">UPI ID:</p>
+                <p className="text-blue-600 font-medium text-sm select-all">{MOCK_UPI}</p>
               </div>
 
               {/* FORM BLOCK */}
@@ -142,7 +139,7 @@ export default function Packages({ plans }) {
                   </div>
                 ) : (
                   <form className="space-y-4" onSubmit={handleSubmit}>
-                    {/* FIXED — ALL INPUTS SAVING PROPER STATE */}
+                    {/* Inputs */}
                     {[
                       {
                         label: "Your Name",
@@ -161,9 +158,7 @@ export default function Packages({ plans }) {
                       },
                     ].map((f) => (
                       <div key={f.name}>
-                        <label className="font-medium text-gray-700">
-                          {f.label}
-                        </label>
+                        <label className="font-medium text-gray-700">{f.label}</label>
                         <input
                           type="text"
                           name={f.name}
@@ -178,9 +173,7 @@ export default function Packages({ plans }) {
 
                     {/* Screenshot Upload */}
                     <div>
-                      <label className="font-medium text-gray-700">
-                        Upload Screenshot
-                      </label>
+                      <label className="font-medium text-gray-700">Upload Screenshot</label>
                       <input
                         type="file"
                         accept="image/*"
@@ -239,9 +232,7 @@ export default function Packages({ plans }) {
             <motion.div
               key={index}
               className={`relative bg-white p-8 rounded-2xl shadow-md border hover:shadow-xl transition cursor-pointer ${
-                item.isHighlighted
-                  ? "border-blue-500 shadow-xl"
-                  : "border-gray-200"
+                item.isHighlighted ? "border-blue-500 shadow-xl" : "border-gray-200"
               }`}
               variants={cardVariant}
               initial="hidden"
@@ -255,19 +246,13 @@ export default function Packages({ plans }) {
               )}
 
               <div className="text-center">
-                <h3 className="text-2xl font-semibold text-gray-900">
-                  {item.plan}
-                </h3>
+                <h3 className="text-2xl font-semibold text-gray-900">{item.plan}</h3>
                 <p className="text-5xl font-bold mt-4 tracking-tight">
                   {item.currency}
                   {item.amount}
                 </p>
-                <p className="text-sm font-medium text-gray-500 mb-6">
-                  per month
-                </p>
-                <p className="text-gray-600 text-[15px] mb-6">
-                  {item.description}
-                </p>
+                <p className="text-sm font-medium text-gray-500 mb-6">per month</p>
+                <p className="text-gray-600 text-[15px] mb-6">{item.description}</p>
               </div>
 
               <ul className="space-y-3 mb-8 text-[15px]">

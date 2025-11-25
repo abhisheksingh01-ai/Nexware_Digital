@@ -3,7 +3,7 @@ import Packages from "./Packages";
 const googleMarketingPlans = [
   {
     plan: "Starter Plan",
-    amount: "7,999",
+    amount: "4,999",
     currency: "₹",
     description: "Perfect for small businesses.",
     features: [
@@ -16,7 +16,7 @@ const googleMarketingPlans = [
   },
   {
     plan: "Growth Plan",
-    amount: "12,499",
+    amount: "6,999",
     currency: "₹",
     description: "Balanced solution for growing companies.",
     features: [
@@ -29,7 +29,7 @@ const googleMarketingPlans = [
   },
   {
     plan: "Enterprise Plan",
-    amount: "25,000+",
+    amount: "12,999",
     currency: "₹",
     description: "Dedicated assistance for scaling brands.",
     features: [
