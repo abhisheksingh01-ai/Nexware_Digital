@@ -1,4 +1,4 @@
-// Premium Stripe-Style Packages Component (Optimized)
+// Premium Stripe-Style Packages Component (Optimized Clean Version)
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircleIcon, XMarkIcon } from "@heroicons/react/24/solid";
@@ -44,7 +44,6 @@ export default function Packages({ plans }) {
     setTimeout(() => setStatus("success"), 1800);
   };
 
-  // Card Animation
   const cardVariant = {
     hidden: { opacity: 0, y: 35 },
     visible: (i) => ({
@@ -80,11 +79,13 @@ export default function Packages({ plans }) {
             </button>
 
             <h3 className="text-2xl font-semibold text-gray-900 border-b pb-4 mb-6">
-              Complete Payment – 
-              <span className="text-blue-600 font-semibold"> {selectedPlan.plan}</span>
+              Complete Payment –
+              <span className="text-blue-600 font-semibold">
+                {selectedPlan.plan}
+              </span>
             </h3>
 
-            <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
               {/* QR Section */}
               <div className="lg:col-span-2 bg-gray-50 p-6 rounded-xl border">
                 <h4 className="text-lg font-medium text-gray-900 mb-3">
@@ -183,7 +184,9 @@ export default function Packages({ plans }) {
                       type="submit"
                       className="w-full py-3 rounded-xl text-lg font-semibold bg-blue-600 text-white hover:bg-blue-700 transition"
                     >
-                      {status === "loading" ? "Submitting..." : "Submit Details"}
+                      {status === "loading"
+                        ? "Submitting..."
+                        : "Submit Details"}
                     </button>
                   </form>
                 )}
@@ -196,47 +199,38 @@ export default function Packages({ plans }) {
   );
 
   return (
-    <section className="py-20 bg-white font-sans">
+    <section className="py-14 bg-white font-sans">
       <div className="max-w-7xl mx-auto px-6">
-
         {/* Heading */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-14">
           <h2
             className="
-              text-4xl sm:text-5xl 
-              font-extrabold 
-              bg-gradient-to-r from-blue-600 to-indigo-700 
-              text-transparent bg-clip-text 
-              drop-shadow-sm
-              tracking-tight
-              animate-fadeInUp
-            "
+      text-3xl sm:text-3xl font-extrabold
+      bg-gradient-to-r from-[#2b7bff] via-[#7dd3fc] to-[#8b5cf6]
+      text-transparent bg-clip-text
+      tracking-tight
+    "
           >
             Everything You Need, At the Right Price
           </h2>
 
           <p
             className="
-              mt-4 
-              text-lg sm:text-xl 
-              text-gray-700 
-              font-medium 
-              max-w-2xl mx-auto 
-              leading-relaxed 
-              animate-fadeInUp 
-              [animation-delay:0.15s]
-            "
+      mt-3 text-lg sm:text-xl 
+      text-gray-700 font-medium 
+      max-w-2xl mx-auto 
+    "
           >
             Premium features. Simple pricing. Built for businesses.
           </p>
         </div>
 
         {/* Plans Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {plans.map((item, index) => (
             <motion.div
               key={index}
-              className={`relative bg-white p-10 rounded-2xl shadow-md border hover:shadow-xl transition cursor-pointer ${
+              className={`relative bg-white p-8 rounded-2xl shadow-md border hover:shadow-xl transition cursor-pointer ${
                 item.isHighlighted
                   ? "border-blue-500 shadow-xl"
                   : "border-gray-200"
@@ -263,12 +257,12 @@ export default function Packages({ plans }) {
                 <p className="text-sm font-medium text-gray-500 mb-6">
                   per month
                 </p>
-                <p className="text-gray-600 text-[15px] mb-10">
+                <p className="text-gray-600 text-[15px] mb-6">
                   {item.description}
                 </p>
               </div>
 
-              <ul className="space-y-3 mb-10 text-[15px]">
+              <ul className="space-y-3 mb-8 text-[15px]">
                 {item.features.map((f, i) => (
                   <li key={i} className="flex items-start">
                     <CheckCircleIcon className="w-5 h-5 text-blue-600 mr-2" />

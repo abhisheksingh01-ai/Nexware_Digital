@@ -37,21 +37,30 @@ export default function Service() {
   ];
 
   return (
-    <section className="w-full py-24 bg-white font-sans overflow-hidden">
+    <section className="w-full py-4 bg-white font-sans overflow-hidden">
       <div className="max-w-6xl mx-auto px-6">
 
-        {/* Page Heading */}
+        {/* Gradient Heading */}
         <motion.h2
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-16 text-center"
+          className="text-4xl md:text-5xl font-extrabold text-center mb-2"
         >
-          Our Services
+          <span className="bg-clip-text text-transparent bg-gradient-to-r 
+          from-[#2b7bff] via-[#7dd3fc] to-[#8b5cf6]">
+            Our Services
+          </span>
         </motion.h2>
 
+        {/* Decorative gradient underline */}
+        <div className="mt-1 flex justify-center mb-8">
+          <div className="w-20 h-1 rounded-full bg-gradient-to-r 
+          from-[#2b7bff] via-[#7dd3fc] to-[#8b5cf6]" />
+        </div>
+
         {/* Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 place-items-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 place-items-center">
           {services.map((item, index) => (
             <motion.div
               key={index}
@@ -62,29 +71,30 @@ export default function Service() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
               className="bg-white rounded-3xl border border-gray-200 shadow-lg hover:shadow-2xl cursor-pointer p-6 flex flex-col items-center justify-center transition-all duration-300 group"
-              style={{ width: "280px", height: "280px" }}
+              style={{ width: "260px", height: "260px" }}
             >
               {/* Icon */}
               <motion.img
                 src={item.icon}
                 alt={item.title}
-                className="w-24 h-24 object-contain mb-4"
+                className="w-20 h-20 object-contain mb-3"
                 whileHover={{ rotate: 8 }}
-                transition={{ type: "spring", stiffness: 200 }}
+                transition={{ type: 'spring', stiffness: 200 }}
               />
 
               {/* Title */}
-              <h3 className="text-xl font-bold text-gray-900 mb-2 text-center">
+              <h3 className="text-lg font-bold text-gray-900 mb-1 text-center">
                 {item.title}
               </h3>
 
               {/* Description */}
-              <p className="text-gray-600 text-sm text-center leading-relaxed px-3">
+              <p className="text-gray-600 text-sm text-center leading-relaxed px-2">
                 {item.desc}
               </p>
             </motion.div>
           ))}
         </div>
+
       </div>
     </section>
   );
