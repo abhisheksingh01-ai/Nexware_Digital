@@ -1,9 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
+
 import webIcon from "../../../assets/web-design.gif";
 import digitalIcon from "../../../assets/social-marketing.gif";
 import logoIcon from "../../../assets/logo-design.gif";
-import googleIcon from "../../../assets/network.gif"
+import googleIcon from "../../../assets/network.gif";
 
 export default function Service() {
   const navigate = useNavigate();
@@ -36,44 +38,64 @@ export default function Service() {
   ];
 
   return (
-    <section className="w-full py-24 **bg-white**">
+    <section className="w-full py-24 bg-white font-sans overflow-hidden">
       <div className="max-w-6xl mx-auto px-6">
 
-        <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-16 text-center">
-          Our Services
-        </h2>
+        {/* Gradient Heading */}
+        <motion.h2
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-4xl md:text-5xl font-extrabold text-center mb-2"
+        >
+          <span className="bg-clip-text text-transparent bg-gradient-to-r 
+          from-[#2b7bff] via-[#7dd3fc] to-[#8b5cf6]">
+            Our Services
+          </span>
+        </motion.h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 place-items-center">
+        {/* Decorative Underline */}
+        <div className="mt-1 flex justify-center mb-8">
+          <div className="w-20 h-1 rounded-full bg-gradient-to-r 
+          from-[#2b7bff] via-[#7dd3fc] to-[#8b5cf6]" />
+        </div>
+
+        {/* Cards Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 place-items-center">
+
           {services.map((item, index) => (
-            <div
+            <motion.div
               key={index}
               onClick={() => navigate(item.link)}
-              className="bg-white rounded-3xl border border-gray-200 shadow-lg 
-              hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer 
-              p-6 flex flex-col items-center justify-center"
-              style={{
-                width: "280px",
-                height: "280px",
-              }}
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.15 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.97 }}
+              className="bg-white rounded-3xl border border-gray-200 shadow-lg
+              hover:shadow-2xl cursor-pointer p-6 flex flex-col items-center 
+              justify-center transition-all duration-300 group"
+              style={{ width: "260px", height: "260px" }}
             >
- 
-              <img
+              <motion.img
                 src={item.icon}
                 alt={item.title}
-                className="w-24 h-24 object-contain mb-4 transition-transform duration-300 group-hover:scale-110"
+                className="w-20 h-20 object-contain mb-3"
+                whileHover={{ rotate: 8 }}
+                transition={{ type: "spring", stiffness: 200 }}
               />
 
-              <h3 className="text-xl font-bold text-gray-900 mb-2 text-center">
+              <h3 className="text-lg font-bold text-gray-900 mb-1 text-center">
                 {item.title}
               </h3>
 
-              <p className="text-gray-600 text-sm text-center leading-relaxed px-3">
+              <p className="text-gray-600 text-sm text-center leading-relaxed px-2">
                 {item.desc}
               </p>
-            </div>
+            </motion.div>
           ))}
-        </div>
 
+        </div>
       </div>
     </section>
   );
