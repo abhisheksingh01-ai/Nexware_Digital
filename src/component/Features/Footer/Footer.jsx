@@ -29,15 +29,15 @@ export default function Footer() {
           <div className="mt-6 space-y-3 text-sm">
             <div className="flex items-start gap-2 text-gray-600">
               <MapPin className="w-5 h-5 text-gray-500" />
-              <span>123 Tech Avenue, Silicon City, 10001</span>
+              <span>Noida Sector 16 E Block</span>
             </div>
             <div className="flex items-start gap-2 text-gray-600">
               <Phone className="w-5 h-5 text-gray-500" />
-              <a href="tel:+1234567890" className="hover:text-[#2b7bff] transition">+1 (234) 567-890</a>
+              <a href="tel:+918929082629" className="hover:text-[#2b7bff] transition">+91 8929082629</a>
             </div>
             <div className="flex items-start gap-2 text-gray-600">
               <Mail className="w-5 h-5 text-gray-500" />
-              <a href="mailto:info@nexwaredigital.com" className="hover:text-[#2b7bff] transition">info@nexwaredigital.com</a>
+              <a href="mailto:itteams@technexwaredigital.in" className="hover:text-[#2b7bff] transition">itteams@technexwaredigital.in</a>
             </div>
           </div>
         </div>
@@ -51,8 +51,8 @@ export default function Footer() {
 
         {renderLinkSection("Company", [
           { name: "About Us", href: "/about" },
-          { name: "Careers", href: "/careers" },
-          { name: "Blog", href: "/blog" },
+          // { name: "Careers", href: "/careers" },
+          // { name: "Blog", href: "/blog" },
           { name: "Contact", href: "/contact" },
           { name: "Privacy Policy", href: "/privacy" },
         ])}
@@ -65,7 +65,7 @@ export default function Footer() {
           <p className="text-gray-600 text-sm mb-4">
             Subscribe to get exclusive insights, latest offers, and news from our team.
           </p>
-          <div className="flex mt-4 shadow-md rounded-xl overflow-hidden ring-1 ring-gray-200 focus-within:ring-[#2b7bff] transition-all duration-300">
+          {/* <div className="flex mt-4 shadow-md rounded-xl overflow-hidden ring-1 ring-gray-200 focus-within:ring-[#2b7bff] transition-all duration-300">
             <input
               type="email"
               placeholder="Your email address"
@@ -74,7 +74,7 @@ export default function Footer() {
             <button className="bg-[#2b7bff] text-white px-5 text-lg font-semibold hover:bg-blue-700 transition">
               ➤
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
 
