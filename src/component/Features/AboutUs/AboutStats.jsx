@@ -8,30 +8,35 @@ const stats = [
 
 export default function AboutStats() {
   return (
-    // Contrasting section background for visual break
-    <section className="bg-gray-50 py-16 lg:py-24">
+    <section className="bg-white py-6 lg:py-10">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-10">
-            <h2 className="text-4xl font-extrabold text-gray-900">Why Choose Nexware Digital?</h2>
-            <p className="text-lg text-gray-500 mt-2">Numbers speak louder than words—our commitment to quality and growth.</p>
+        
+        <div className="text-center mb-6">
+          <h2 className="text-3xl font-extrabold text-gray-900">
+            Why Choose Nexware Digital?
+          </h2>
+          <p className="text-base text-gray-500 mt-1">
+            Numbers speak louder than words—our commitment to quality and growth.
+          </p>
         </div>
 
-        {/* Highlighted Stats Grid */}
-        <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
+        {/* Stats Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
           {stats.map((stat, index) => (
-            <div 
-              key={index} 
-              className="p-8 bg-white rounded-xl shadow-lg border border-gray-100 transition-transform duration-300 hover:shadow-xl hover:scale-[1.05]"
+            <div
+              key={index}
+              className="p-6 bg-white rounded-xl shadow-lg border border-gray-100 transition-transform duration-300 hover:shadow-xl hover:scale-[1.04]"
             >
-              <h4 className="text-5xl font-extrabold text-[#2b7bff] mb-2">
+              <h4 className="text-4xl font-extrabold text-[#2b7bff] mb-1">
                 {stat.value}
               </h4>
-              <p className="text-lg font-semibold text-gray-700 uppercase tracking-wider">
+              <p className="text-sm font-semibold text-gray-700 uppercase tracking-wider">
                 {stat.label}
               </p>
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );

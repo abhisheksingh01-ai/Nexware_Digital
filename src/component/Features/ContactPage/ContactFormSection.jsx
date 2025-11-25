@@ -22,8 +22,8 @@ export default function ContactFormSection() {
                             </div>
                             <div>
                                 <strong className="block text-gray-200">Our Location</strong>
-                                <div className="text-gray-400">123 Business St.</div>
-                                <div className="text-gray-400">City, State 12345</div>
+                                <div className="text-gray-400">E Block</div>
+                                <div className="text-gray-400">Noida Sector 16</div>
                             </div>
                         </div>
 
@@ -34,7 +34,7 @@ export default function ContactFormSection() {
                             </div>
                             <div>
                                 <strong className="block text-gray-200">Give Us A Call</strong>
-                                <a href="tel:1234567890" className="text-gray-400 hover:text-[#2b7bff] transition duration-200">(123) 456-7890</a>
+                                <a href="tel:1234567890" className="text-gray-400 hover:text-[#2b7bff] transition duration-200">(+91) 89290 82629</a>
                             </div>
                         </div>
 
@@ -45,7 +45,7 @@ export default function ContactFormSection() {
                             </div>
                             <div>
                                 <strong className="block text-gray-200">Email Us</strong>
-                                <a href="mailto:info@nexwaredigital.com" className="text-gray-400 hover:text-[#2b7bff] transition duration-200">info@nexwaredigital.com</a>
+                                <a href="mailto:info@nexwaredigital.com" className="text-gray-400 hover:text-[#2b7bff] transition duration-200">itteams@technexwaredigital.com</a>
                             </div>
                         </div>
                     </div>
