@@ -1,4 +1,5 @@
-import React from 'react';
+import React from "react";
+import DigitalMarImg from "../../../../../assets/DigitalMarImg.png"; // path/name unchanged
 
 const Hero = () => {
   return (
@@ -18,9 +19,41 @@ const Hero = () => {
 
       {/* Image/Illustration */}
       <div className="order-1 md:order-2 flex justify-center md:justify-end">
-        {/*  */}
-        <div className="w-full max-w-sm h-64 bg-blue-50 rounded-xl flex items-center justify-center border border-blue-200">
-             <svg className="w-32 h-32 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+        {/* Outer wrapper that holds the animated gradient border */}
+        <div className="relative w-full max-w-sm h-64 rounded-xl group">
+
+          {/* Animated gradient border (acts like a 2px border) */}
+          <div
+            aria-hidden="true"
+            className="absolute -inset-0.5 rounded-xl bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-500
+                       opacity-0 transform scale-95 transition-all duration-600 ease-out
+                       group-hover:opacity-100 group-hover:scale-100 blur-[6px] pointer-events-none"
+          />
+
+          {/* Solid backing so gradient border reads as border and doesn't bleed through */}
+          <div className="absolute inset-1 rounded-lg bg-white/95 pointer-events-none"></div>
+
+          {/* Image card (inner) */}
+          <div
+            className="relative z-10 h-full rounded-lg overflow-hidden
+                       shadow-md transition-all duration-500 ease-out
+                       group-hover:shadow-2xl group-hover:-translate-y-1"
+          >
+            <img
+              src={DigitalMarImg}
+              alt="Digital marketing illustration"
+              loading="lazy"
+              className="w-full h-full object-cover object-center transition-transform duration-700 ease-out
+                         group-hover:scale-105"
+            />
+          </div>
+
+          {/* Subtle inner border glow that animates on hover (keeps things soft) */}
+          <div
+            aria-hidden="true"
+            className="absolute inset-2 rounded-lg border border-white/40 opacity-0 transition-opacity duration-500
+                       group-hover:opacity-100 pointer-events-none"
+          />
         </div>
       </div>
     </section>

@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import PricingIllustration from "../../../../assets/project_01.png"; // confirm path
+import PricingIllustration from "../../../../assets/PricingPage.jpg"; // confirm path
 import FormButton from "../../Button/FormButton";
 import { Link } from "react-router-dom";
 import GoogleAdsPage from "../Price";
 
 
 // Small config / constants so it's easy to update later
-const PRICE = "12,999";
+const PRICE = "9,999";
 const CURRENCY = "₹";
 const BILLING_TERM = "/ one-time";
 

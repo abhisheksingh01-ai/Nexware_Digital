@@ -1,7 +1,8 @@
 import React from "react";
+import WebDevImg from '../../../../../assets/WebDevImg.png';
 
 export default function Header({
-  imageUrl = "https://miro.medium.com/1*xAUnGJlMvI622sjInCO6Bg.gif",
+  imageUrl = WebDevImg,
   onGetStarted,
 }) {
   return (
@@ -31,16 +32,27 @@ export default function Header({
             </div>
           </div>
 
-          {/* RIGHT SECTION */}
+          {/* RIGHT SECTION (Zoom + Soft Rotate Effect) */}
           <div className="flex justify-center lg:justify-end relative">
             <div className="relative w-72 sm:w-80 lg:w-[430px]">
+
               <div className="relative rounded-3xl overflow-hidden shadow-2xl ring-1 ring-gray-200">
                 <img
                   src={imageUrl}
                   alt="Website Design"
-                  className="w-full h-auto object-cover rounded-3xl"
+                  className="
+                    w-full 
+                    h-auto 
+                    object-cover 
+                    rounded-3xl
+                    transition-all 
+                    duration-700 
+                    hover:scale-110 
+                    hover:rotate-[1.5deg]
+                  "
                 />
               </div>
+
             </div>
           </div>
 
