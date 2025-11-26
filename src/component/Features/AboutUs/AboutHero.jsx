@@ -2,6 +2,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import AboutPage from "../../../assets/AboutPage.jpg";
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
+
 
 export default function AboutHero() {
   return (
@@ -11,7 +13,7 @@ export default function AboutHero() {
       <div className="pointer-events-none absolute -right-20 -bottom-20 w-80 h-80 bg-gradient-to-br from-[#fff0f5] to-[#fff8f0] rounded-full opacity-60 blur-3xl"></div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-12 items-center gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-12 items-center gap-10">
 
           {/* Left Content */}
           <motion.div
@@ -27,19 +29,20 @@ export default function AboutHero() {
             </h2>
 
             <p className="text-lg text-slate-700 max-w-2xl mb-6">
-              At Nexware Digital, we help businesses unlock their true digital potential.
-              From crafting visually stunning websites to delivering seamless UI/UX
-              experiences, we build smart, scalable solutions that drive real growth.
-              Backed by modern technology, strategic creativity, and a passion for
-              innovation, we empower brands to stand out, grow faster, and succeed in the
+              At Nexware Digital, we help businesses unlock their true digital
+              potential. From crafting visually stunning websites to delivering
+              seamless UI/UX experiences, we build smart, scalable solutions
+              that drive real growth. Backed by innovation and modern
+              technology, we empower brands to stand out and succeed in a
               digital-first world.
             </p>
-
-
-            <button className="flex items-center gap-2 px-8 py-3 bg-[#2b7bff] text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-transform duration-300 hover:-translate-y-1">
+            <Link
+              to="/portfolio"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-[#2b7bff] text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 active:scale-95"
+            >
               View Our Portfolio
-              <ArrowRight size={20} />
-            </button>
+              <ArrowRight size={20} className="mt-[1px]" />
+            </Link>
           </motion.div>
 
           {/* Right Image Card */}
@@ -56,8 +59,8 @@ export default function AboutHero() {
                 className="w-full h-64 object-cover rounded-xl mb-3"
               />
               <p className="text-slate-600 text-sm">
-                Our expert team collaborates with modern tools to turn your vision
-                into a digital masterpiece.
+                Our expert team collaborates with modern tools to turn your
+                vision into a digital masterpiece.
               </p>
             </div>
           </motion.div>
