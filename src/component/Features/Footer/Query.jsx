@@ -15,7 +15,7 @@ export default function Query() {
     setStatus(null);
 
     try {
-      const res = await fetch("https://nexware-digital-server.vercel.app/send-email", {
+      const res = await fetch("https://nexware-digital-server.vercel.app/api/contact/contact-detail", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
