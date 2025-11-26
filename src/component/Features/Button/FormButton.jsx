@@ -25,7 +25,7 @@ export default function FormButton({ btn = "Get Started Now" }) {
 
     try {
       const res = await fetch(
-        "https://nexware-digital-server.vercel.app/send-email",
+        "https://nexware-digital-server.vercel.app/api/contact/contact-detail",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
