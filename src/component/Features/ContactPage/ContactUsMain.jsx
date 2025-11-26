@@ -119,7 +119,6 @@ export default function ContactUsMain({onGetStarted}) {
             </div>
 
             <a
-              href="#book"
             >
              
               <FormButton btn="Book Now" onClick={onGetStarted} />

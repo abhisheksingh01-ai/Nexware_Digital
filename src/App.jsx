@@ -15,6 +15,7 @@ import LogoDesign from "./component/Features/services/pages/LogoDesign/LogoDesig
 import Portfolio from "./component/Features/portfolio/Landing";
 import GoogleAdsPage from "./component/Features/price/Price";
 import ContactPage from "./component/Features/ContactPage/ContactPage";
+import Demo from "./component/Features/portfolio/Portfolio";
 
 export default function App() {
   return (
@@ -42,6 +43,7 @@ export default function App() {
         <Route path="/listing" element={<GoogleList />} />
         <Route path="/logo" element={<LogoDesign/>} />
         <Route path="/buy" element={<GoogleAdsPage/>} />
+        {/* <Route path="/demo" element={<Demo/>} /> */}
       </Routes>
       <Footer />
     </Router>
