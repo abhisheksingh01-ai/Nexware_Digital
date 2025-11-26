@@ -1,5 +1,7 @@
 import React from "react";
 import { CheckCircle, Smartphone, Globe, FileText, Zap } from "lucide-react";
+import { Link } from "react-router-dom";
+
 
 function FeatureRow({ icon: Icon, title, text }) {
   return (
@@ -33,7 +35,9 @@ function KeywordChips({ chips = [] }) {
 function ServiceCard({ title, price, bullets = [], accent, keywords = [] }) {
   return (
     <article
-      className={`bg-white rounded-2xl p-5 shadow-lg border ${accent || ""} h-full flex flex-col transform hover:-translate-y-2 transition`}
+      className={`bg-white rounded-2xl p-5 shadow-lg border ${
+        accent || ""
+      } h-full flex flex-col transform hover:-translate-y-2 transition`}
     >
       <div className="flex items-start justify-between gap-3">
         <div>
@@ -70,9 +74,6 @@ function ServiceCard({ title, price, bullets = [], accent, keywords = [] }) {
         >
           Get Quote
         </a>
-        <a href="#details" className="text-sm text-slate-600 hover:underline">
-          See details
-        </a>
       </div>
     </article>
   );
@@ -96,7 +97,9 @@ export default function FeaturesServices() {
         {/* Left Column */}
         <div className="h-full">
           <div className="bg-white p-6 rounded-2xl shadow-lg border h-full flex flex-col">
-            <h3 className="text-xl font-semibold text-slate-900 mb-3">Key Features</h3>
+            <h3 className="text-xl font-semibold text-slate-900 mb-3">
+              Key Features
+            </h3>
 
             <div className="space-y-4 flex-grow">
               <FeatureRow
@@ -123,15 +126,13 @@ export default function FeaturesServices() {
 
             <div className="mt-6 border-t pt-4 flex items-center justify-between">
               <div>
-                <div className="text-xs text-slate-500">Need a custom feature?</div>
-                <div className="font-semibold text-slate-900">We’ll build it for you.</div>
+                <div className="text-xs text-slate-500">
+                  Need a custom feature?
+                </div>
+                <div className="font-semibold text-slate-900">
+                  We’ll build it for you.
+                </div>
               </div>
-              <a
-                href="#contact"
-                className="text-sm text-[#2b7bff] font-medium hover:underline"
-              >
-                Talk to us →
-              </a>
             </div>
           </div>
         </div>
@@ -154,70 +155,122 @@ export default function FeaturesServices() {
         {/* Right Column with more keywords for each service */}
         <div className="h-full">
           <div className="bg-white p-6 rounded-2xl shadow-lg border h-full flex flex-col">
-            <h3 className="text-xl font-semibold text-slate-900 mb-3">Additional Services</h3>
+            <h3 className="text-xl font-semibold text-slate-900 mb-3">
+              Additional Services
+            </h3>
 
             <div className="space-y-3 flex-grow">
               <div className="flex items-start justify-between">
                 <div>
-                  <div className="text-sm font-medium text-slate-900">Logo Design</div>
-                  <div className="text-xs text-slate-500">Brand identity & variations</div>
+                  <div className="text-sm font-medium text-slate-900">
+                    Logo Design
+                  </div>
+                  <div className="text-xs text-slate-500">
+                    Brand identity & variations
+                  </div>
                   <div className="mt-2 flex gap-2">
-                    <span className="inline-block text-xs px-2 py-1 rounded-full bg-slate-100 text-slate-700">Branding</span>
-                    <span className="inline-block text-xs px-2 py-1 rounded-full bg-slate-100 text-slate-700">Vector</span>
-                    <span className="inline-block text-xs px-2 py-1 rounded-full bg-slate-100 text-slate-700">Print-ready</span>
+                    <span className="inline-block text-xs px-2 py-1 rounded-full bg-slate-100 text-slate-700">
+                      Branding
+                    </span>
+                    <span className="inline-block text-xs px-2 py-1 rounded-full bg-slate-100 text-slate-700">
+                      Vector
+                    </span>
+                    <span className="inline-block text-xs px-2 py-1 rounded-full bg-slate-100 text-slate-700">
+                      Print-ready
+                    </span>
                   </div>
                 </div>
-                <div className="text-sm font-semibold text-slate-900">₹ 3,999</div>
+                <div className="text-sm font-semibold text-slate-900">
+                  ₹ 3,999
+                </div>
               </div>
 
               <div className="flex items-start justify-between">
                 <div>
-                  <div className="text-sm font-medium text-slate-900">Google My Business</div>
-                  <div className="text-xs text-slate-500">Listing + optimization</div>
+                  <div className="text-sm font-medium text-slate-900">
+                    Google My Business
+                  </div>
+                  <div className="text-xs text-slate-500">
+                    Listing + optimization
+                  </div>
                   <div className="mt-2 flex gap-2">
-                    <span className="inline-block text-xs px-2 py-1 rounded-full bg-slate-100 text-slate-700">Local SEO</span>
-                    <span className="inline-block text-xs px-2 py-1 rounded-full bg-slate-100 text-slate-700">Maps</span>
-                    <span className="inline-block text-xs px-2 py-1 rounded-full bg-slate-100 text-slate-700">Citations</span>
+                    <span className="inline-block text-xs px-2 py-1 rounded-full bg-slate-100 text-slate-700">
+                      Local SEO
+                    </span>
+                    <span className="inline-block text-xs px-2 py-1 rounded-full bg-slate-100 text-slate-700">
+                      Maps
+                    </span>
+                    <span className="inline-block text-xs px-2 py-1 rounded-full bg-slate-100 text-slate-700">
+                      Citations
+                    </span>
                   </div>
                 </div>
-                <div className="text-sm font-semibold text-slate-900">₹ 2,999</div>
+                <div className="text-sm font-semibold text-slate-900">
+                  ₹ 2,999
+                </div>
               </div>
 
               <div className="flex items-start justify-between">
                 <div>
-                  <div className="text-sm font-medium text-slate-900">Content Writing</div>
-                  <div className="text-xs text-slate-500">SEO content & copy</div>
+                  <div className="text-sm font-medium text-slate-900">
+                    Content Writing
+                  </div>
+                  <div className="text-xs text-slate-500">
+                    SEO content & copy
+                  </div>
                   <div className="mt-2 flex gap-2">
-                    <span className="inline-block text-xs px-2 py-1 rounded-full bg-slate-100 text-slate-700">SEO</span>
-                    <span className="inline-block text-xs px-2 py-1 rounded-full bg-slate-100 text-slate-700">Blogs</span>
-                    <span className="inline-block text-xs px-2 py-1 rounded-full bg-slate-100 text-slate-700">Landing copy</span>
+                    <span className="inline-block text-xs px-2 py-1 rounded-full bg-slate-100 text-slate-700">
+                      SEO
+                    </span>
+                    <span className="inline-block text-xs px-2 py-1 rounded-full bg-slate-100 text-slate-700">
+                      Blogs
+                    </span>
+                    <span className="inline-block text-xs px-2 py-1 rounded-full bg-slate-100 text-slate-700">
+                      Landing copy
+                    </span>
                   </div>
                 </div>
-                <div className="text-sm font-semibold text-slate-900">₹ 1.5k+</div>
+                <div className="text-sm font-semibold text-slate-900">
+                  ₹ 1.5k+
+                </div>
               </div>
 
               <div className="flex items-start justify-between">
                 <div>
-                  <div className="text-sm font-medium text-slate-900">E-commerce Setup</div>
-                  <div className="text-xs text-slate-500">Product upload & payment</div>
+                  <div className="text-sm font-medium text-slate-900">
+                    E-commerce Setup
+                  </div>
+                  <div className="text-xs text-slate-500">
+                    Product upload & payment
+                  </div>
                   <div className="mt-2 flex gap-2">
-                    <span className="inline-block text-xs px-2 py-1 rounded-full bg-slate-100 text-slate-700">Shopify</span>
-                    <span className="inline-block text-xs px-2 py-1 rounded-full bg-slate-100 text-slate-700">Payment</span>
-                    <span className="inline-block text-xs px-2 py-1 rounded-full bg-slate-100 text-slate-700">Catalog</span>
+                    <span className="inline-block text-xs px-2 py-1 rounded-full bg-slate-100 text-slate-700">
+                      Shopify
+                    </span>
+                    <span className="inline-block text-xs px-2 py-1 rounded-full bg-slate-100 text-slate-700">
+                      Payment
+                    </span>
+                    <span className="inline-block text-xs px-2 py-1 rounded-full bg-slate-100 text-slate-700">
+                      Catalog
+                    </span>
                   </div>
                 </div>
-                <div className="text-sm font-semibold text-slate-900">₹ 5,999</div>
+                <div className="text-sm font-semibold text-slate-900">
+                  ₹ 5,999
+                </div>
               </div>
             </div>
 
             <div className="mt-6 pt-4 border-t flex items-center justify-between">
               <div className="text-sm text-slate-600">Want a package?</div>
-              <a
-                href="#packages"
-                className="text-sm bg-[#10b981] text-white px-3 py-2 rounded-lg font-medium shadow"
+              <Link
+                to="/buy"
+                className="inline-block text-sm md:text-base bg-[#10b981] text-white 
+             px-4 py-2.5 rounded-lg font-medium shadow hover:opacity-95 
+             transition active:scale-[0.98]"
               >
                 See Packages
-              </a>
+              </Link>
             </div>
           </div>
         </div>

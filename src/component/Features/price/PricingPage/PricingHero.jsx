@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import PricingIllustration from "../../../../assets/project_01.png"; // confirm path
+import FormButton from "../../Button/FormButton";
+import { Link } from "react-router-dom";
+import GoogleAdsPage from "../Price";
+
 
 // Small config / constants so it's easy to update later
 const PRICE = "12,999";
 const CURRENCY = "₹";
 const BILLING_TERM = "/ one-time";
 
-export default function PricingHero() {
+export default function PricingHero({ onGetStarted }) {
   const [imgError, setImgError] = useState(false);
 
   // fallback svg base64 (small neutral placeholder) to avoid broken image UI
@@ -52,19 +56,25 @@ export default function PricingHero() {
           </p>
 
           <div className="flex flex-wrap gap-3 items-center">
-            <a
+            {/* <a
               href="#pricing"
               className="inline-flex items-center gap-2 rounded-2xl bg-[#2b7bff] text-white px-5 py-3 font-semibold shadow-lg hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#2b7bff] transition"
             >
               Get Started
-            </a>
+            </a> */}
+            <Link
+                  to="/buy"
+              className="inline-flex items-center gap-2 rounded-2xl bg-[#2b7bff] text-white px-5 py-3 font-semibold shadow-lg hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#2b7bff] transition"
+                >
+                  Buy Now
+                </Link>
 
-            <a
+            {/* <a
               href="#compare"
               className="inline-flex items-center gap-2 rounded-2xl border border-slate-200 px-4 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50 transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-200"
             >
               Compare Plans
-            </a>
+            </a> */}
           </div>
 
           {/* Quick highlights */}
@@ -113,18 +123,20 @@ export default function PricingHero() {
               </div>
 
               <div className="mt-4 flex items-center gap-3 justify-center">
-                <a
-                  href="#buy"
+                <Link
+                  to="/buy"
                   className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#10b981] text-white px-4 py-2 font-medium shadow hover:opacity-95 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#10b981]"
                 >
                   Buy Now
-                </a>
-                <a
-                  href="#demo"
+                </Link>
+
+                <Link
+                  to="/portfolio"
                   className="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-200"
                 >
-                  Request Demo
-                </a>
+                  View Demo
+                </Link>
+
               </div>
             </figcaption>
           </div>
@@ -139,10 +151,11 @@ export default function PricingHero() {
             <p className="font-semibold text-slate-900">Book a quick consult — 15 mins</p>
           </div>
           <a
-            href="#book"
-            className="inline-flex items-center gap-2 rounded-2xl bg-[#2b7bff] text-white px-4 py-2 font-medium shadow hover:opacity-95 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#2b7bff]"
+            // href="#book"
+          // className="inline-flex items-center gap-2 rounded-2xl bg-[#2b7bff] text-white px-4 py-2 font-medium shadow hover:opacity-95 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#2b7bff]"
           >
-            Book Now
+            {/* Book Now */}
+            <FormButton btn="Book Now" onClick={onGetStarted} />
           </a>
         </div>
       </div>

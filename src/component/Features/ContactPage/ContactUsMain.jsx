@@ -1,8 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
 import msgImg from "../../../assets/msg.png";
+import FormButton from '../Button/FormButton';
 
-export default function ContactUsMain() {
+export default function ContactUsMain({onGetStarted}) {
   return (
     <section className="relative overflow-hidden bg-white pt-0 pb-10 lg:pt-0 lg:pb-14">
       {/* Decorative blobs */}
@@ -119,9 +120,9 @@ export default function ContactUsMain() {
 
             <a
               href="#book"
-              className="inline-flex items-center gap-2 rounded-2xl bg-[#10b981] text-white px-4 py-2 font-medium shadow"
             >
-              Book Now
+             
+              <FormButton btn="Book Now" onClick={onGetStarted} />
             </a>
           </div>
         </div>

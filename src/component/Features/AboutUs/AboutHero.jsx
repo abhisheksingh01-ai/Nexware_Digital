@@ -27,9 +27,14 @@ export default function AboutHero() {
             </h2>
 
             <p className="text-lg text-slate-700 max-w-2xl mb-6">
-              At Nexware Digital, we bring together creativity, technology, and strategy 
-              to build experiences that empower businesses and inspire audiences.
+              At Nexware Digital, we help businesses unlock their true digital potential.
+              From crafting visually stunning websites to delivering seamless UI/UX
+              experiences, we build smart, scalable solutions that drive real growth.
+              Backed by modern technology, strategic creativity, and a passion for
+              innovation, we empower brands to stand out, grow faster, and succeed in the
+              digital-first world.
             </p>
+
 
             <button className="flex items-center gap-2 px-8 py-3 bg-[#2b7bff] text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-transform duration-300 hover:-translate-y-1">
               View Our Portfolio
@@ -51,7 +56,7 @@ export default function AboutHero() {
                 className="w-full h-64 object-cover rounded-xl mb-3"
               />
               <p className="text-slate-600 text-sm">
-                Our expert team collaborates with modern tools to turn your vision 
+                Our expert team collaborates with modern tools to turn your vision
                 into a digital masterpiece.
               </p>
             </div>

@@ -41,6 +41,7 @@ export default function App() {
         <Route path="/digital" element={<DigitalMarket />} />
         <Route path="/listing" element={<GoogleList />} />
         <Route path="/logo" element={<LogoDesign/>} />
+        <Route path="/buy" element={<GoogleAdsPage/>} />
       </Routes>
       <Footer />
     </Router>
