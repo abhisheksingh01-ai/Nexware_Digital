@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircleIcon, XMarkIcon } from "@heroicons/react/24/solid";
+import QR_img from "../../../assets/QR.jpg";
 
-const MOCK_QR =
-  "https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=";
-const MOCK_UPI = "YOUR.UPI@BANK";
+const MOCK_QR =QR_img;
+const MOCK_UPI = "8920664202@ptaxis";
 
 // ---------------------------
 // PAYMENT MODAL COMPONENT (UPDATED)
@@ -105,9 +105,7 @@ const PaymentModal = ({
               </h4>
 
               <img
-                src={`${MOCK_QR}${encodeURIComponent(
-                  `upi://pay?pa=${MOCK_UPI}&pn=Merchant&am=${selectedPlan.amount}&cu=INR`
-                )}`}
+                src={MOCK_QR}
                 alt="QR Code"
                 className="w-48 h-48 sm:w-52 sm:h-52 mx-auto border-4 border-white rounded-xl shadow-lg"
               />
