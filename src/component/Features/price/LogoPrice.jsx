@@ -1,50 +1,56 @@
 import Packages from "./Packages";
 
-const logoDesignPlans = [
+// Logo Design Plans Data
+export const logoPlans = [
   {
     plan: "Basic Logo",
-    amount: "1,999",
+    amount: "1,499",
     currency: "₹",
-    description: "Best for startups needing a simple identity.",
+    description: "Simple and clean logo for startups or personal projects.",
     features: [
-      "2 logo concepts",
-      "1 revision",
-      "PNG + JPG files",
-      "Delivery in 2 days",
+      "1 initial concept",
+      "2 revisions",
+      "High-resolution PNG & JPG",
+      "Transparent background",
     ],
     isHighlighted: false,
   },
   {
     plan: "Professional Logo",
-    amount: "4,999",
+    amount: "2,999",
     currency: "₹",
-    description: "Perfect for growing brands with quality needs.",
+    description: "Perfect for businesses looking for a professional identity.",
     features: [
-      "4 logo concepts",
-      "Unlimited revisions",
-      "PNG + JPG + PDF",
-      "Brand color palette",
-      "Priority delivery",
+      "3 initial concepts",
+      "5 revisions",
+      "Vector file (AI, EPS, SVG)",
+      "Color + black/white versions",
     ],
     isHighlighted: true,
   },
   {
-    plan: "Premium Brand Kit",
-    amount: "7,499",
+    plan: "Premium Brand Logo",
+    amount: "5,999",
     currency: "₹",
-    description: "Full branding solution for established companies.",
+    description: "Complete brand logo package with multiple variations.",
     features: [
-      "6 premium logo concepts",
+      "5 initial concepts",
       "Unlimited revisions",
-      "Source files (AI, EPS, SVG)",
-      "Business card design",
-      "Social media kit",
-      "Brand guideline PDF",
+      "Full brand guide",
+      "Social media & favicon ready",
     ],
     isHighlighted: false,
   },
 ];
 
 export default function LogoPrice() {
-  return <Packages plans={logoDesignPlans} />;
+  return (
+    <div>
+      <Packages
+        plans={logoPlans}
+        title="Logo Design Packages"
+        subtitle="Creative, professional, and scalable logos for your brand."
+      />
+    </div>
+  );
 }
