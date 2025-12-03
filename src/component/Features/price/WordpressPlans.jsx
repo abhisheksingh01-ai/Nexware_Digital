@@ -3,7 +3,7 @@ import Packages from "./Packages";
 export const wordpressPlans = [
   {
     plan: "Basic WP Website",
-    amount: "8,999",
+    amount: "3,999",
     currency: "₹",
     description: "Perfect for simple business presentation websites.",
     features: [
@@ -16,7 +16,7 @@ export const wordpressPlans = [
   },
   {
     plan: "Advanced WP Website",
-    amount: "15,999",
+    amount: "6,999",
     currency: "₹",
     description: "Best for service companies that need custom sections.",
     features: [
@@ -29,7 +29,7 @@ export const wordpressPlans = [
   },
   {
     plan: "WP E-Commerce Store",
-    amount: "29,999",
+    amount: "12,999",
     currency: "₹",
     description: "Full-featured WooCommerce store for online selling.",
     features: [

@@ -4,7 +4,7 @@ import Packages from "./Packages";
 export const googleListingPlans = [
   {
     plan: "Basic Local SEO",
-    amount: "1,499",
+    amount: "9,99",
     currency: "₹",
     description: "Improve visibility and optimize your Google Business Profile.",
     features: [
@@ -17,7 +17,7 @@ export const googleListingPlans = [
   },
   {
     plan: "Advanced Google Listing",
-    amount: "2,999",
+    amount: "1,999",
     currency: "₹",
     description: "Boost ranking and attract more local customers.",
     features: [
@@ -30,7 +30,7 @@ export const googleListingPlans = [
   },
   {
     plan: "Premium Local Growth",
-    amount: "5,999",
+    amount: "2,999",
     currency: "₹",
     description: "Complete Google Maps ranking strategy for maximum visibility.",
     features: [

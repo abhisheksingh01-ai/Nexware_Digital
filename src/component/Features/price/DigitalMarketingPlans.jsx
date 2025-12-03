@@ -29,7 +29,7 @@ export const digitalMarketingPlans = [
   },
   {
     plan: "Premium E-Commerce",
-    amount: "13,999",
+    amount: "11,999",
     currency: "₹",
     description: "Full-scale marketing suite for e-commerce brands.",
     features: [

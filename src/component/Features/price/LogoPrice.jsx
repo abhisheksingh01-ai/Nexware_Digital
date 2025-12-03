@@ -4,7 +4,7 @@ import Packages from "./Packages";
 export const logoPlans = [
   {
     plan: "Basic Logo",
-    amount: "1,499",
+    amount: "4,99",
     currency: "₹",
     description: "Simple and clean logo for startups or personal projects.",
     features: [
@@ -17,7 +17,7 @@ export const logoPlans = [
   },
   {
     plan: "Professional Logo",
-    amount: "2,999",
+    amount: "9,99",
     currency: "₹",
     description: "Perfect for businesses looking for a professional identity.",
     features: [
@@ -30,7 +30,7 @@ export const logoPlans = [
   },
   {
     plan: "Premium Brand Logo",
-    amount: "5,999",
+    amount: "1,999",
     currency: "₹",
     description: "Complete brand logo package with multiple variations.",
     features: [

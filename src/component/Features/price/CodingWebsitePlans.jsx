@@ -3,7 +3,7 @@ import Packages from "./Packages";
 export const codingWebsitePlans = [
   {
     plan: "Starter Website",
-    amount: "14,999",
+    amount: "4,999",
     currency: "₹",
     description: "Suitable for individual portfolios or small profiles.",
     features: [
@@ -16,7 +16,7 @@ export const codingWebsitePlans = [
   },
   {
     plan: "Business Website",
-    amount: "24,999",
+    amount: "7,999",
     currency: "₹",
     description: "Built for professional service-based companies.",
     features: [
@@ -29,7 +29,7 @@ export const codingWebsitePlans = [
   },
   {
     plan: "Premium Web App",
-    amount: "49,999",
+    amount: "13,999",
     currency: "₹",
     description: "High-end scalable web application for startups.",
     features: [
