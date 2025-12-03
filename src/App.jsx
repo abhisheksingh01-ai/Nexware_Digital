@@ -13,9 +13,10 @@ import GoogleList from "./component/Features/services/pages/GoogleList/LandingPa
 import DigitalMarket from "./component/Features/services/pages/DigitalMarket/LandingPage";
 import LogoDesign from "./component/Features/services/pages/LogoDesign/LogoDesign";
 import Portfolio from "./component/Features/portfolio/Landing";
-import GoogleAdsPage from "./component/Features/price/Price";
 import ContactPage from "./component/Features/ContactPage/ContactPage";
-import Demo from "./component/Features/portfolio/Portfolio";
+import DigitalMarketingPlans from "./component/Features/price/DigitalMarketingPlans";
+import CodingWebsitePlans from "./component/Features/price/CodingWebsitePlans";
+import WordpressPlans from "./component/Features/price/WordpressPlans";
 
 export default function App() {
   return (
@@ -28,25 +29,34 @@ export default function App() {
             <>
               <Header />
               <Service />
-              <GoogleAdsPage />
+              <DigitalMarketingPlans />
+              <CodingWebsitePlans />
+              <WordpressPlans />
               <Portfolio />
-              <Query/>
+              <Query />
             </>
           }
         />
-        <Route path="/pricing" element={<PricingPage/>} />
-        <Route path="/about" element={<AboutPage/>} />
-        <Route path="/contact" element={<ContactPage/>} />
-        <Route path="/portfolio" element={<PortfolioPage/>} />
+        <Route path="/pricing" element={<PricingPage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/portfolio" element={<PortfolioPage />} />
         <Route path="/website" element={<WebsiteDetail />} />
         <Route path="/digital" element={<DigitalMarket />} />
         <Route path="/listing" element={<GoogleList />} />
-        <Route path="/logo" element={<LogoDesign/>} />
-        <Route path="/buy" element={<GoogleAdsPage/>} />
-        {/* <Route path="/demo" element={<Demo/>} /> */}
+        <Route path="/logo" element={<LogoDesign />} />
+        <Route
+          path="/buy"
+          element={
+            <>
+              <DigitalMarketingPlans />
+              <CodingWebsitePlans />
+              <WordpressPlans />
+            </>
+          }
+        />
       </Routes>
       <Footer />
     </Router>
-
   );
 }

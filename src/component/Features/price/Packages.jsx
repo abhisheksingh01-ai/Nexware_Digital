@@ -235,7 +235,11 @@ const PaymentModal = ({
 // --------------------------------
 // MAIN COMPONENT
 // --------------------------------
-export default function Packages({ plans }) {
+export default function Packages({ 
+  plans, 
+  title = "Everything You Need, At the Right Price",
+  subtitle = "Premium features. Simple pricing. Built for businesses."
+}) {
   const [openModal, setOpenModal] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState(null);
 
@@ -277,10 +281,10 @@ export default function Packages({ plans }) {
         {/* Heading */}
         <div className="text-center mb-14">
           <h2 className="text-3xl font-extrabold bg-gradient-to-r from-blue-600 to-purple-500 text-transparent bg-clip-text sm:text-4xl">
-            Everything You Need, At the Right Price
+            {title}
           </h2>
           <p className="mt-3 text-base sm:text-lg text-gray-700 font-medium max-w-2xl mx-auto">
-            Premium features. Simple pricing. Built for businesses.
+            {subtitle}
           </p>
         </div>
 
